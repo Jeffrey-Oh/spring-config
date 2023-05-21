@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    config:
+      username: ${CONFIG_SERVER_USERNAME}
+      password: ${CONFIG_SERVER_PASSWORD}
+      server:
+        encrypt:
+          enabled: false
+        git:
+          uri: ${CONFIG_SERVER_GIT_URL}
+          default-label: main
+          ignore-local-ssh-settings: false
+          basedir: ./public
+
+encrypt:
+  key: ${CONFIG_SERVER_ENCRYPT_KEY}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
